@@ -1,0 +1,6 @@
+/dot.vim.folder/bundle/
+.~
+*.swp
+Thumbs.db
+.DS_Store
+.DS_Store?

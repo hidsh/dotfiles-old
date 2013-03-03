@@ -19,6 +19,25 @@ syntax on
 " for clipboard on tmux
 set clipboard=unnamed
 
+" vundle
+set nocompatible
+filetype off
+
+set rtp+=~/dotfiles/vundle.git/
+call vundle#rc()
+
+" Bundle...は使用するプラグインを書く。詳細はguthubのREADMEが詳しい。type :BundleInstall
+Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/unite.vim'
+"Bundle 'thinca/vim-ref'
+"Bundle 'thinca/vim-quickrun'
+filetype plugin indent on     " required!
+
+ 
+
+
+
+
 "vi互換をオフする
 set nocompatible
  
