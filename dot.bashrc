@@ -24,8 +24,20 @@ export LANG=ja_JP.UTF-8
 
 alias ls='ls -F'
 alias port-update='sudo port -d selfupdate; sudo port -d sync'
-
+alias rm='/usr/local/bin/rmtrash'
+alias repair='diskutil repairPermissions /'
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/bin      # my script or tools
+
 
 # gibo
 source ~/bash_completion.d/gibo-completion.bash
+
+# z for bash
+source ~/bin/z.sh
+
+# python
+export PYTHONSTARTUP=~/.pythonrc
+
+
+export PATH="/Applications/microchip/xc8/v1.20/bin":$PATH
