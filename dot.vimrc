@@ -19,22 +19,37 @@ syntax on
 " for clipboard on tmux
 set clipboard=unnamed
 
-" vundle
 set nocompatible
-filetype off
 
-set rtp+=~/dotfiles/vundle.git/
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" Bundle...は使用するプラグインを書く。詳細はguthubのREADMEが詳しい。type :BundleInstall
-Bundle 'tomasr/molokai' 
-Bundle 'lsdr/monokai'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+NeoBundleCheck
+
+NeoBundle 'tomasr/molokai' 
+NeoBundle 'sickill/vim-monokai' 
+"NeoBundle 'lsdr/monokai'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+
 filetype plugin indent on     " required!
 
 set background=dark
@@ -109,3 +124,4 @@ nnoremap ZZ <Nop>
 
 "現在開いているvimスクリプトファイルを実行。
 nnoremap <F8> :source %<CR>
+
