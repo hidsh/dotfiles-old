@@ -83,11 +83,11 @@ noremap : ;
 
 " $ --> 4
 noremap $ 4
-"noremap 4 $
+noremap 4 $
 
 " P --> p
 noremap P p
-"noremap p P
+noremap p P
 
 " Spaceキーで画面スクロール
 nnoremap <SPACE>   <PageDown>
