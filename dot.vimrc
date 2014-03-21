@@ -27,16 +27,19 @@ set rtp+=~/dotfiles/vundle.git/
 call vundle#rc()
 
 " Bundle...は使用するプラグインを書く。詳細はguthubのREADMEが詳しい。type :BundleInstall
+Bundle 'tomasr/molokai' 
+Bundle 'lsdr/monokai'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'Shougo/neocomplcache'
-"Bundle 'Shougo/unite.vim'
-"Bundle 'thinca/vim-ref'
-"Bundle 'thinca/vim-quickrun'
+Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
 filetype plugin indent on     " required!
 
- 
-
-
-
+set background=dark
+let g:rehash256 = 1
+colorscheme molokai
 
 "vi互換をオフする
 set nocompatible
@@ -48,7 +51,7 @@ set directory=$HOME/bak
 set hidden
  
 "行番号を表示する
-set number
+"set number
  
 "閉括弧が入力された時、対応する括弧を強調する
 set showmatch
@@ -80,10 +83,29 @@ noremap : ;
 
 " $ --> 4
 noremap $ 4
-noremap 4 $
+"noremap 4 $
 
 " P --> p
 noremap P p
-noremap p P
+"noremap p P
+
+" Spaceキーで画面スクロール
+nnoremap <SPACE>   <PageDown>
+nnoremap n <PageUp>
 
 
+"ビジュアルモード時vで行末まで選択
+vnoremap v $h
+
+
+" カレントディレクトリを自動的に移動
+augroup BufferAu
+    autocmd!
+    autocmd BufNewFile,BufRead,BufEnter * if isdirectory(expand("%:p:h")) && bufname("%") !~ "NERD_tree" | cd %:p:h | endif
+augroup END
+
+"強制全保存終了を無効化。
+nnoremap ZZ <Nop>
+
+"現在開いているvimスクリプトファイルを実行。
+nnoremap <F8> :source %<CR>
