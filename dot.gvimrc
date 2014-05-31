@@ -15,10 +15,10 @@ set lines=48
 
 set gcr=a:blinkwait0,a:block-cursor
 
-set guifont=Menlo\ Regular:h16
-set guifontwide=ヒラギノ丸ゴ\ StdN\ W4:h16
+set guifont=Menlo\ Regular:h15
+"set guifontwide=ヒラギノ丸ゴ\ StdN\ W4:h15
 
-colorscheme desert
+"colorscheme desert
 "colorscheme zenburn
-"colorscheme molokai
+colorscheme molokai
 

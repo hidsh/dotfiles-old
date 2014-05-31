@@ -19,6 +19,8 @@ syntax on
 " for clipboard on tmux
 "set clipboard=unnamed
 
+set nocompatible
+filetype off
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -54,9 +56,6 @@ set background=dark
 let g:rehash256 = 1
 colorscheme molokai
 
-"vi互換をオフする
-set nocompatible
- 
 "スワップファイル用のディレクトリを指定する
 set directory=$HOME/bak
  
@@ -64,7 +63,7 @@ set directory=$HOME/bak
 set hidden
  
 "行番号を表示する
-"set number
+set number
  
 "閉括弧が入力された時、対応する括弧を強調する
 set showmatch

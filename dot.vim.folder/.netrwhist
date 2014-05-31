@@ -1,11 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/g/test'
-let g:netrw_dirhist_2='/Users/g/test/chrome-extension'
-let g:netrw_dirhist_3='/Users/g/test/chrome-extension/tuto'
-let g:netrw_dirhist_4='/Users/g'
-let g:netrw_dirhist_5='/Users/g/.emacs.d'
-let g:netrw_dirhist_6='/Users/g'
-let g:netrw_dirhist_7='/Users/g/.vim'
-let g:netrw_dirhist_8='/Users/g/.vim/bundle'
-let g:netrw_dirhist_9='/Users/g/git-clone/hidapi'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/g/Dropbox'
+let g:netrw_dirhist_2='/Users/g'
+let g:netrw_dirhist_3='/Users/g/Library'
+let g:netrw_dirhist_4='/Users/g/Library/Preferences'
+let g:netrw_dirhist_5='/Users/g'
