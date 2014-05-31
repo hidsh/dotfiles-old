@@ -17,9 +17,7 @@ set foldlevel=0
 syntax on
 
 " for clipboard on tmux
-set clipboard=unnamed
-
-set nocompatible
+"set clipboard=unnamed
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -93,8 +91,8 @@ augroup END
 highlight CursorLine ctermbg=black guibg=black
 
 " : --> ;
-noremap ; :
-noremap : ;
+"noremap ; :
+"noremap : ;
 
 " $ --> 4
 noremap $ 4
@@ -106,7 +104,7 @@ noremap p P
 
 " Spaceキーで画面スクロール
 nnoremap <SPACE>   <PageDown>
-nnoremap n <PageUp>
+nnoremap <S-SPACE> <PageUp>
 
 
 "ビジュアルモード時vで行末まで選択
@@ -122,6 +120,8 @@ augroup END
 "強制全保存終了を無効化。
 nnoremap ZZ <Nop>
 
-"現在開いているvimスクリプトファイルを実行。
-nnoremap <F8> :source %<CR>
-
+"cursor
+if has('multi_byte_ime') || has('xim')
+    " 日本語入力ON時のカーソルの色を設定
+    highlight CursorIM guibg=Purple guifg=NONE
+endif
