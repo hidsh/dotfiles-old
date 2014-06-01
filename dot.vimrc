@@ -91,24 +91,24 @@ set wrapscan
 "新しい行を作った時に高度な自動インデントを行う
 set smarttab
 
-" 検索結果のハイライトをEsc連打でクリアする
-nnoremap <ESC><ESC> :nohlsearch<CR>
-
 " grep検索を設定する
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nh
 
-" カレントウィンドウにのみ罫線を引く
-set cursorline
-augroup cch
-autocmd! cch
-autocmd WinLeave * set nocursorline
-autocmd WinEnter,BufRead * set cursorline
-augroup END
-:hi clear CursorLine
-:hi CursorLine
-highlight CursorLine ctermbg=black guibg=black
+" 検索結果のハイライトをEsc連打でクリアする
+nnoremap <ESC><ESC> :nohlsearch<CR>
 
+" カレントウィンドウにのみ罫線を引く
+" set cursorline
+" augroup cch
+" autocmd! cch
+" autocmd WinLeave * set nocursorline
+" autocmd WinEnter,BufRead * set cursorline
+" augroup END
+" :hi clear CursorLine
+" :hi CursorLine gui=underline
+" highlight CursorLine ctermbg=black guibg=black
+"
 " : --> ;
 "noremap ; :
 "noremap : ;
