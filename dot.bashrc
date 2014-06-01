@@ -39,5 +39,4 @@ source ~/bin/z.sh
 # python
 export PYTHONSTARTUP=~/.pythonrc
 
-
 export PATH="/Applications/microchip/xc8/v1.20/bin":$PATH
