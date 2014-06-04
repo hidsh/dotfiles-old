@@ -62,6 +62,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle "tyru/caw.vim.git"
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'spolu/dwm.vim'
 "------------------------------------------------------------
 filetype plugin indent on     " required!
 
@@ -70,26 +71,20 @@ let g:rehash256 = 1
 colorscheme molokai
 " colorscheme solarized
 
-"スワップファイル用のディレクトリを指定する
-set directory=$HOME/bak
+set directory=$HOME/bak     " スワップファイル用のディレクトリを指定する
+set hidden                  " 変更中のファイルでも、保存しないで他のファイルを表示する
+set number                  " 行番号を表示する
+set showmatch               " 閉括弧が入力された時、対応する括弧を強調する
+set smartcase               " 検索時に大文字を含んでいたら大/小を区別
+set wrapscan                " 検索がファイル末尾まで進んだら、ファイル先頭から再び検索する
+set nowrap                  " 折り返ししない
+set smarttab                " 新しい行を作った時に高度な自動インデントを行う
 
-"変更中のファイルでも、保存しないで他のファイルを表示する
-set hidden
-
-"行番号を表示する
-set number
-
-"閉括弧が入力された時、対応する括弧を強調する
-set showmatch
-
-"検索時に大文字を含んでいたら大/小を区別
-set smartcase
-
-" 検索がファイル末尾まで進んだら、ファイル先頭から再び検索する
-set wrapscan
-
-"新しい行を作った時に高度な自動インデントを行う
-set smarttab
+if 'gui_macvim'
+    "set imdisable          " 挿入モードから抜ける際、入る際に必ずIMEがオフになる
+    set antialias
+    set guifont
+endif
 
 " grep検索を設定する
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
@@ -137,12 +132,6 @@ augroup END
 
 "強制全保存終了を無効化。
 nnoremap ZZ <Nop>
-
-"cursor
-if has('multi_byte_ime') || has('xim')
-    " 日本語入力ON時のカーソルの色を設定
-    highlight CursorIM guibg=Purple guifg=NONE
-endif
 
 " ウィンドウ分割で上や左にではなく右や下に開くように
 set splitright
@@ -207,10 +196,26 @@ let g:jellybeans_background_color = "000000"
 " call unite#custom_default_action('file', 'tabopen')
 let g:neomru#file_mru_path=expand('~/.vim/etc/neomru/file')
 let g:neomru#directory_mru_path=expand('~/.vim/etc/neomru/directory')
-let g:unite_enable_start_insert=1
+" let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+" nnoremap <silent> ,uu :<C-u>Unite file_mru buffer -hide-source-names<CR>
+
+noremap zp :Unite buffer_tab file_mru -hide-source-names<CR>
+noremap zn :UniteWithBufferDir -buffer-name=files file file/new<CR>
+
+" dwm.vim 設定（全てデフォルト）
+nnoremap <c-j> <c-w>w
+nnoremap <c-k> <c-w>W
+nmap <m-r> <Plug>DWMRotateCounterclockwise
+nmap <m-t> <Plug>DWMRotateClockwise
+nmap <c-n> <Plug>DWMNew
+nmap <c-c> <Plug>DWMClose
+nmap <c-@> <Plug>DWMFocus
+nmap <c-Space> <Plug>DWMFocus
+nmap <c-l> <Plug>DWMGrowMaster
+nmap <c-h> <Plug>DWMShrinkMaster
+
 
 " Lokaltog/vim-easymotion
 " http://blog.remora.cx/2012/08/vim-easymotion.html
@@ -235,10 +240,45 @@ autocmd BufWritePre * :%s/\s\+$//ge
 "autocmd BufWritePre * :%s/\t/ /ge
 
 " 日本語入力をリセット
-au BufNewFile,BufRead * set iminsert=0
+" au BufNewFile,BufRead * set iminsert=0
+
+" autocomplcache
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : ''
+    \ }
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
-" lightline
+
+" lightline setting
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
