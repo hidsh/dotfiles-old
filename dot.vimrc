@@ -8,7 +8,7 @@ set autoindent
 set backupdir=$HOME/bak
 set clipboard+=unnamed
 
-set paste
+" set paste
 set expandtab
 set textwidth=0
 set tabstop=4

@@ -20,3 +20,8 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 export PATH="/Applications/microchip/xc8/v1.20/bin":$PATH
 export PATH=/usr/local/bin:$PATH
+
+# show current directory name at iterm2 tab
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
+fi

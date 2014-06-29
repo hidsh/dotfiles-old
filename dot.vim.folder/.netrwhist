@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/g/Dropbox'
 let g:netrw_dirhist_2='/Users/g'
 let g:netrw_dirhist_3='/Users/g/Library'
 let g:netrw_dirhist_4='/Users/g/Library/Preferences'
 let g:netrw_dirhist_5='/Users/g'
+let g:netrw_dirhist_6='/Users/g/dotfiles/dot.vim.folder/bundle/molokai/colors'
