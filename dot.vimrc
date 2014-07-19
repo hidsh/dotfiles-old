@@ -3,6 +3,8 @@
 if has("autocmd")
   " autocmd bufwritepost .vimrc source %
 endif
+command! Evimrc  e $MYVIMRC
+
 "-----------------------------------------------------------
 set autoindent
 set backupdir=$HOME/bak
@@ -50,8 +52,9 @@ NeoBundleCheck
 NeoBundle 'tomasr/molokai'
 NeoBundle 'sickill/vim-monokai'
 "NeoBundle 'lsdr/monokai'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'w0ng/vim-hybrid'
+"NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -59,10 +62,16 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'YankRing.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle "tyru/caw.vim.git"
+NeoBundle 'tyru/caw.vim'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'spolu/dwm.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'grep.vim'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'AndrewRadev/switch.vim'
+
 "------------------------------------------------------------
 filetype plugin indent on     " required!
 
@@ -94,7 +103,7 @@ set grepprg=grep\ -nh
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " カレントウィンドウにのみ罫線を引く
-" set cursorline
+set cursorline
 " augroup cch
 " autocmd! cch
 " autocmd WinLeave * set nocursorline
