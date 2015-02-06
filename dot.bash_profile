@@ -2,7 +2,7 @@
 #
 #   Filename: .bash_profile
 #   Last modified: Mon Oct 22 2012 19:09:23 JST
-#  
+#
 #   note: for mac
 if [ -f ~/.bashrc ] ; then
 . ~/.bashrc
@@ -23,5 +23,5 @@ export PATH=/usr/local/bin:$PATH
 
 # show current directory name at iterm2 tab
 if [ $ITERM_SESSION_ID ]; then
-  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
+  export PROMPT_COMMAND='printf "\e]0;%s\a" "${PWD/#$HOME/~}"'
 fi

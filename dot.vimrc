@@ -66,7 +66,6 @@ NeoBundle 'tyru/caw.vim'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'spolu/dwm.vim'
-NeoBundle 'Shougo/neosnippet'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'grep.vim'
 NeoBundle 'Townk/vim-autoclose'
@@ -85,10 +84,11 @@ set hidden                  " 変更中のファイルでも、保存しない�
 set number                  " 行番号を表示する
 set showmatch               " 閉括弧が入力された時、対応する括弧を強調する
 set smartcase               " 検索時に大文字を含んでいたら大/小を区別
+set incsearch
 set wrapscan                " 検索がファイル末尾まで進んだら、ファイル先頭から再び検索する
 set nowrap                  " 折り返ししない
 set smarttab                " 新しい行を作った時に高度な自動インデントを行う
-
+set cursorline
 if 'gui_macvim'
     "set imdisable          " 挿入モードから抜ける際、入る際に必ずIMEがオフになる
     set antialias
@@ -103,7 +103,7 @@ set grepprg=grep\ -nh
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " カレントウィンドウにのみ罫線を引く
-set cursorline
+" set cursorline
 " augroup cch
 " autocmd! cch
 " autocmd WinLeave * set nocursorline
@@ -212,7 +212,7 @@ let g:unite_source_file_mru_limit = 200
 
 noremap zp :Unite buffer_tab file_mru -hide-source-names<CR>
 noremap zn :UniteWithBufferDir -buffer-name=files file file/new<CR>
-
+nnoremap <leader>m :<C-u>Unite file_mru<CR>
 " dwm.vim 設定（全てデフォルト）
 nnoremap <c-j> <c-w>w
 nnoremap <c-k> <c-w>W
@@ -225,6 +225,7 @@ nmap <c-Space> <Plug>DWMFocus
 nmap <c-l> <Plug>DWMGrowMaster
 nmap <c-h> <Plug>DWMShrinkMaster
 
+nnoremap <leader>r :<C-u>Unite file_mru<CR>
 
 " Lokaltog/vim-easymotion
 " http://blog.remora.cx/2012/08/vim-easymotion.html
@@ -241,6 +242,9 @@ hi EasyMotionShade  ctermbg=none ctermfg=blue
 " comment out toggle --> \c
 nmap <Leader>c <Plug>(caw:i:toggle)
 vmap <Leader>c <Plug>(caw:i:toggle)
+
+nmap <c-;> <Plug>(caw:i:toggle)
+vmap <c-;> <Plug>(caw:i:toggle)
 
 
 " 保存時に行末の空白を除去する
@@ -340,6 +344,22 @@ function! MyFilename()
        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
+" exit from insert-mode
+inoremap <silent> jj <ESC>
 
+" end of line
+noremap 4 $
+
+" parens or bracket
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap < <><Left>
+
+" tab
+nnoremap <F12> gt
+nnoremap <F11> gT
 
 

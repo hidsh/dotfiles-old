@@ -14,6 +14,7 @@ set columns=100
 set lines=48
 
 set gcr=a:blinkwait0,a:block-cursor
+set guicursor
 
 " set guifont=Menlo\ Regular:h14
 set guifont=Menlo\ for\ Powerline:h14

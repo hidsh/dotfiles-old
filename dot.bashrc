@@ -33,9 +33,6 @@ PATH=$PATH:$HOME/bin      # my script or tools
 # gibo
 #source ~/bash_completion.d/gibo-completion.bash
 
-# z for bash
-source ~/bin/z.sh
-
 # python
 export PYTHONSTARTUP=~/.pythonrc
 
@@ -43,3 +40,5 @@ export PYTHONSTARTUP=~/.pythonrc
 # source /usr/local/Cellar/sd_cl/0.0.4/etc/sd_cl # brew
 source /Users/g/git-clone/sd_cl/etc/sd_cl   # git
 
+# z.sh
+# `brew --prefix`/etc/profile.d/z.sh
