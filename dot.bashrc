@@ -6,7 +6,7 @@
 #   note: require ~/.bash_profile on mac
 #
 
-if [ $TERM = "dumb" ]; then
+if [ $TERM != "xterm" ]; then
   export PS1="\u@\h \w$"
   # export PS1="\[\e[37;40;1m\]\u@\h \w$\[\e[0m\]"   # white on black
 else
