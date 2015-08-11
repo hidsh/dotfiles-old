@@ -8,11 +8,11 @@
 
 if [ $TERM != "xterm" ]; then
   export PS1="\u@\h \w$"
-  # export PS1="\[\e[37;40;1m\]\u@\h \w$\[\e[0m\]"   # white on black
+  # export PS1="\[\e[30;47m\]\u@\h \w$\[\e[0m\]"   # black on white
 else
   # export PS1="\[\e[35;1m\]\u@\[\e[34;1m\]\h\e[0m:\[\e[0m\]\e[32;1m\w\e[0m$"
   # export PS1="\u@\h \w$"
-  export PS1="\[\e[30;47;1m\]\u@\h \w$\[\e[0m\]"  # black on white
+  export PS1="\[\e[30;46m\]\u@\h \w$\[\e[0m\]"  # black on cyan
 fi
 export LANG=ja_JP.UTF-8
 

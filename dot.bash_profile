@@ -25,3 +25,6 @@ export PATH=/usr/local/bin:$PATH
 if [ $ITERM_SESSION_ID ]; then
   export PROMPT_COMMAND='printf "\e]0;%s\a" "${PWD/#$HOME/~}"'
 fi
+
+export SSH_AUTH_SOCK=$(launchctl getenv SSH_AUTH_SOCK)
+
